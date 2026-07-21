@@ -1,0 +1,24 @@
+.DS_Store
+.vscode/
+
+# Documents privés : ne jamais les publier dans le dépôt du site
+documents.html
+assets/documents/
+assets/img/thumbnails/
+assets/js/documents-data.js
+*.pdf
+*.doc
+*.docx
+*.odt
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.zip
+
+# Secrets et configurations locales
+.env
+.env.*
+*.pem
+*.key
+*.p12

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Ajouter l’URL publique du sitemap après la mise en ligne.
