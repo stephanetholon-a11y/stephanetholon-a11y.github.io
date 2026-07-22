@@ -22,7 +22,7 @@
   const navItems = [
     ["accueil", "Accueil", "index.html"],
     ["documents", "Travaux", "documents.html"],
-    ["cv", "CV", "index.html#cv"],
+    ["cv", "CV", "assets/documents/cv-stephane-tholon.pdf"],
     ["contact", "Contact", "contact.html"]
   ];
 
@@ -50,9 +50,9 @@
   if (footer) {
     footer.innerHTML = `
       <div class="footer-grid">
-        <div><a class="footer-name" href="index.html">Stéphane Tholon</a><p>CV et travaux en mathématiques</p></div>
-        <div class="footer-links"><a href="documents.html">Travaux</a><a href="index.html#cv">Curriculum vitæ</a></div>
-        <div class="footer-contact"><a href="mailto:${data.profile.email}">${data.profile.email}</a><span>${data.profile.situation}</span></div>
+        <div><a class="footer-name" href="index.html">Stéphane Tholon</a><p>Mathématiques</p></div>
+        <div class="footer-links"><a href="documents.html">Travaux</a><a href="assets/documents/cv-stephane-tholon.pdf">Curriculum vitæ</a></div>
+        <div class="footer-contact"><a href="mailto:${data.profile.email}">${data.profile.email}</a></div>
       </div>`;
   }
 
@@ -98,7 +98,7 @@
         <div class="timeline-marker"><span>${String(index + 1).padStart(2, "0")}</span></div>
         <div class="timeline-period">${item.period}</div>
         <div class="timeline-content">
-          <p class="eyebrow">${item.place}</p>
+          ${item.place ? `<p class="eyebrow">${item.place}</p>` : ""}
           <h3>${item.title}</h3>
           <p>${item.text}</p>
         </div>
@@ -169,17 +169,16 @@
   }
 
   function documentCard(doc, index) {
-    const abstract = doc.abstract?.trim() || "Résumé à venir.";
-    const pending = !doc.abstract?.trim();
+    const abstract = doc.abstract?.trim();
     return `<article class="work-entry reveal" data-doc-id="${doc.id}">
       <div class="work-index">${String(index + 1).padStart(2, "0")}</div>
       <div class="work-content">
         <p class="work-meta"><span>${doc.kind}</span><span>${doc.context}</span></p>
         <h3>${doc.title}</h3>
-        <div class="work-abstract">
+        ${abstract ? `<div class="work-abstract">
           <span>Résumé</span>
-          <p${pending ? ' class="abstract-pending"' : ""}>${abstract}</p>
-        </div>
+          <p>${abstract}</p>
+        </div>` : ""}
       </div>
       <div class="work-actions">
         <button class="button button-primary" type="button" data-preview="${doc.id}">Consulter</button>
@@ -191,7 +190,7 @@
   const documentGrid = document.querySelector("[data-document-grid]");
   if (documentGrid) {
     const count = document.querySelector("[data-result-count]");
-    documentGrid.innerHTML = data.documents.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document</h3><p>Le dépôt sera complété prochainement.</p></div>';
+    documentGrid.innerHTML = data.documents.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document</h3></div>';
     if (count) count.textContent = `${data.documents.length} document${data.documents.length > 1 ? "s" : ""}`;
     documentGrid.addEventListener("click", event => {
       const trigger = event.target.closest("[data-preview]");

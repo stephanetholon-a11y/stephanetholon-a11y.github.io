@@ -347,16 +347,12 @@ main { min-height: calc(100vh - var(--nav-height)); }
 .error-page h1 { margin: 35px 0 12px; font-family: var(--serif); font-size: 2.2rem; font-weight: 500; }
 .error-page p { max-width: 490px; margin: 0 auto 30px; color: var(--muted); }
 
-/* Dépôt de candidatures */
+/* Accueil et dépôt de travaux */
 .repository-hero { padding: clamp(90px, 13vw, 170px) 0 clamp(80px, 11vw, 140px); border-bottom: 1px solid var(--line); }
 .repository-hero-inner { max-width: 920px; }
 .repository-hero h1 { margin: 0; color: var(--navy); font-family: var(--serif); font-size: clamp(3.4rem, 8vw, 7rem); font-weight: 500; letter-spacing: -.055em; line-height: .96; }
 .repository-intro { max-width: 760px; margin: 34px 0 0; color: var(--muted); font-size: clamp(1.05rem, 1.8vw, 1.3rem); line-height: 1.7; }
-.cv-section { background: color-mix(in srgb, var(--surface), transparent 28%); }
-.cv-panel { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
-.cv-panel h2, .home-works h2, .works-heading h2 { margin: 0; color: var(--navy); font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
-.cv-panel p:not(.eyebrow) { max-width: 610px; margin: 22px 0 0; color: var(--muted); }
-.cv-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+.home-works h2, .works-heading h2 { margin: 0; color: var(--navy); font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 500; letter-spacing: -.04em; line-height: 1; }
 .home-works { display: grid; grid-template-columns: 1fr 1fr auto; gap: 50px; align-items: end; }
 .home-works > p { max-width: 500px; margin: 0; color: var(--muted); }
 .works-shell { max-width: 1080px; }
@@ -371,7 +367,6 @@ main { min-height: calc(100vh - var(--nav-height)); }
 .work-abstract { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 18px; max-width: 760px; margin-top: 24px; }
 .work-abstract > span { padding-top: 3px; color: var(--muted); font-size: .64rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .work-abstract p { margin: 0; color: var(--ink); line-height: 1.65; }
-.work-abstract .abstract-pending { color: var(--muted); font-style: italic; }
 .work-actions { display: flex; flex-direction: column; gap: 9px; min-width: 142px; padding-top: 24px; }
 .work-actions .button { width: 100%; }
 .modal-actions a, .modal-actions button { width: auto; min-width: 48px; padding: 0 11px; color: var(--ink); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
@@ -433,8 +428,7 @@ main { min-height: calc(100vh - var(--nav-height)); }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .repository-hero { padding-top: 74px; }
-  .cv-panel, .home-works { grid-template-columns: 1fr; gap: 28px; }
-  .cv-actions { justify-content: flex-start; }
+  .home-works { grid-template-columns: 1fr; gap: 28px; }
   .works-heading { display: block; }
   .works-heading p { margin-top: 18px; }
   .work-entry { grid-template-columns: 34px 1fr; gap: 18px; padding: 38px 0; }
@@ -446,6 +440,6 @@ main { min-height: calc(100vh - var(--nav-height)); }
   :root { --page: calc(100vw - 24px); }
   .hero-actions .button { width: 100%; }
   .document-cover { height: 285px; padding-inline: 42px; }
-  .cv-actions .button, .work-actions .button { width: 100%; }
+  .work-actions .button { width: 100%; }
   .work-abstract { grid-template-columns: 1fr; gap: 8px; }
 }
