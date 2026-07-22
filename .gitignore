@@ -1,12 +1,14 @@
 .DS_Store
 .vscode/
 
-# Documents privés : ne jamais les publier dans le dépôt du site
-documents.html
-assets/documents/
+# Seuls les quatre PDF ci-dessous ont été autorisés pour publication.
+*.pdf
+!assets/documents/cv-stephane-tholon.pdf
+!assets/documents/probabilites-analyse-fonctionnelle.pdf
+!assets/documents/cours-mathematiques-pcx.pdf
+!assets/documents/lecon-hyperplans.pdf
 assets/img/thumbnails/
 assets/js/documents-data.js
-*.pdf
 *.doc
 *.docx
 *.odt

@@ -1,13 +1,13 @@
 /* Données éditoriales du site. Modifier ce fichier suffit pour mettre à jour
    le parcours, les projets et les documents affichés. */
 window.siteData = {
-  documentsPublic: false,
+  documentsPublic: true,
 
   profile: {
     name: "Stéphane Tholon",
     role: "Étudiant en mathématiques — Sorbonne Université",
-    email: "stephane.tholon@gmail.com",
-    affiliation: "Sorbonne Université"
+    email: "stephane.tholon@icloud.com",
+    situation: "Étudiant à Sorbonne Université"
   },
 
   timeline: [

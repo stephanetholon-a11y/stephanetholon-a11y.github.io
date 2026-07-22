@@ -18,8 +18,9 @@ Puis ouvrir <http://localhost:8080>.
 
 ## Contenu éditorial
 
-Les données affichées sont regroupées dans `assets/js/data.js` : parcours, centres d'intérêt et projets.
+La liste publique des travaux et leurs résumés se modifient dans `assets/js/public-documents.js`.
+Pour ajouter un résumé, il suffit de remplacer `abstract: ""` par le texte voulu entre les guillemets.
 
-## Documents privés
+## Documents publiés
 
-Les PDF, la page `documents.html`, les miniatures et `assets/js/documents-data.js` restent locaux. Ils sont explicitement exclus du dépôt par `.gitignore` et ne doivent pas être ajoutés au site public sans décision ultérieure explicite.
+Les PDF présents dans `assets/documents` ont été relus et autorisés pour intégration au site le 22 juillet 2026. Tout nouveau document devra être ajouté explicitement au catalogue avant publication.

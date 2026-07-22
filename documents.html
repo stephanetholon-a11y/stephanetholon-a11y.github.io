@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travaux — Stéphane Tholon</title>
+  <meta name="description" content="Liste des rapports, notes de cours et travaux mathématiques de Stéphane Tholon.">
+  <meta property="og:title" content="Travaux — Stéphane Tholon">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-card.svg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/public-documents.js"></script>
+  <script defer src="assets/js/data.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body data-page="documents">
+  <header class="site-header" data-site-header></header>
+  <main id="contenu">
+    <header class="page-hero">
+      <div class="container page-hero-grid">
+        <div><span class="page-number">DÉPÔT</span><h1>Travaux</h1></div>
+        <p class="lead">Une sélection de rapports, notes de cours et ressources mathématiques. Chaque document peut être consulté en ligne ou téléchargé.</p>
+      </div>
+    </header>
+    <section class="section" aria-labelledby="works-list-title">
+      <div class="container works-shell">
+        <div class="works-heading">
+          <h2 id="works-list-title">Liste des documents</h2>
+          <p><span data-result-count>0 document</span> au format PDF</p>
+        </div>
+        <div class="work-list" data-document-grid aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+  <dialog class="pdf-modal" data-pdf-modal aria-labelledby="modal-title">
+    <div class="modal-header"><strong id="modal-title" data-modal-title>Aperçu du document</strong><div class="modal-actions"><a href="#" data-modal-download download aria-label="Télécharger le PDF">PDF</a><button type="button" data-close-modal aria-label="Fermer">Fermer</button></div></div>
+    <iframe src="about:blank" title="Visionneuse PDF"></iframe>
+  </dialog>
+  <footer class="site-footer" data-site-footer></footer>
+</body>
+</html>

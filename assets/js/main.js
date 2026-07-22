@@ -20,9 +20,9 @@
   };
 
   const navItems = [
-    ["accueil", "Accueil", "index.html"], ["parcours", "Parcours", "parcours.html"],
-    ["recherche", "Recherche", "recherche.html"], ["enseignement", "Enseignement", "enseignement.html"],
-    ...(data.documentsPublic ? [["documents", "Documents", "documents.html"]] : []),
+    ["accueil", "Accueil", "index.html"],
+    ["documents", "Travaux", "documents.html"],
+    ["cv", "CV", "index.html#cv"],
     ["contact", "Contact", "contact.html"]
   ];
 
@@ -50,9 +50,9 @@
   if (footer) {
     footer.innerHTML = `
       <div class="footer-grid">
-        <div><a class="footer-name" href="index.html">Stéphane Tholon</a><p>Mathématiques · Analyse · Opérateurs</p></div>
-        <div class="footer-links"><a href="recherche.html">Recherche</a><a href="enseignement.html">Enseignement</a>${data.documentsPublic ? '<a href="documents.html">Documents</a>' : ''}</div>
-        <div class="footer-contact"><a href="mailto:${data.profile.email}">${data.profile.email}</a><span>${data.profile.affiliation}</span></div>
+        <div><a class="footer-name" href="index.html">Stéphane Tholon</a><p>CV et travaux en mathématiques</p></div>
+        <div class="footer-links"><a href="documents.html">Travaux</a><a href="index.html#cv">Curriculum vitæ</a></div>
+        <div class="footer-contact"><a href="mailto:${data.profile.email}">${data.profile.email}</a><span>${data.profile.situation}</span></div>
       </div>`;
   }
 
@@ -168,68 +168,35 @@
     paint("Tous");
   }
 
-  function documentCard(doc) {
-    return `<article class="document-card reveal" data-doc-id="${doc.id}">
-      <button class="document-cover" type="button" data-preview="${doc.id}" aria-label="Aperçu de ${doc.title}">
-        ${doc.thumbnail ? `<img src="${doc.thumbnail}" alt="Première page de ${doc.title}" loading="lazy">` : '<span class="document-placeholder" aria-hidden="true">PDF</span>'}
-        <span class="cover-overlay">Aperçu ${icon("external", 15)}</span>
-      </button>
-      <div class="document-body">
-        <div class="document-kicker"><span>${doc.type}</span><span>${doc.pages} page${doc.pages > 1 ? "s" : ""}</span></div>
-        <h3>${doc.title}</h3><p>${doc.description}</p>
-        <div class="document-details"><span>${doc.domain}</span><time datetime="${doc.date}">${doc.dateLabel}</time></div>
-        <div class="card-actions"><button type="button" data-preview="${doc.id}">Consulter ${icon("external", 14)}</button><a href="${doc.file}" download>PDF ${icon("download", 14)}</a></div>
+  function documentCard(doc, index) {
+    const abstract = doc.abstract?.trim() || "Résumé à venir.";
+    const pending = !doc.abstract?.trim();
+    return `<article class="work-entry reveal" data-doc-id="${doc.id}">
+      <div class="work-index">${String(index + 1).padStart(2, "0")}</div>
+      <div class="work-content">
+        <p class="work-meta"><span>${doc.kind}</span><span>${doc.context}</span></p>
+        <h3>${doc.title}</h3>
+        <div class="work-abstract">
+          <span>Résumé</span>
+          <p${pending ? ' class="abstract-pending"' : ""}>${abstract}</p>
+        </div>
+      </div>
+      <div class="work-actions">
+        <button class="button button-primary" type="button" data-preview="${doc.id}">Consulter</button>
+        <a class="button button-outline" href="${doc.file}" download>Télécharger</a>
       </div>
     </article>`;
   }
 
   const documentGrid = document.querySelector("[data-document-grid]");
   if (documentGrid) {
-    const search = document.querySelector("#document-search");
-    const domain = document.querySelector("#document-domain");
-    const type = document.querySelector("#document-type");
-    const sort = document.querySelector("#document-sort");
     const count = document.querySelector("[data-result-count]");
-    const categoryButtons = [...document.querySelectorAll("[data-document-category]")];
-    const knownCategories = new Set(categoryButtons.map(button => button.dataset.documentCategory));
-    const requestedCategory = new URLSearchParams(window.location.search).get("categorie") || "";
-    let activeCategory = knownCategories.has(requestedCategory) ? requestedCategory : "";
-    const fillSelect = (select, items) => {
-      [...new Set(items)].sort((a, b) => a.localeCompare(b, "fr")).forEach(item => select.insertAdjacentHTML("beforeend", `<option value="${item}">${item}</option>`));
-    };
-    fillSelect(domain, data.documents.map(doc => doc.domain));
-    fillSelect(type, data.documents.map(doc => doc.type));
-
-    const paint = () => {
-      const query = search.value.trim().toLocaleLowerCase("fr");
-      let docs = data.documents.filter(doc => {
-        const haystack = [doc.title, doc.description, doc.domain, doc.type, ...(doc.keywords || [])].join(" ").toLocaleLowerCase("fr");
-        return (!activeCategory || doc.category === activeCategory) && (!query || haystack.includes(query)) && (!domain.value || doc.domain === domain.value) && (!type.value || doc.type === type.value);
-      });
-      docs.sort((a, b) => sort.value === "alpha" ? a.title.localeCompare(b.title, "fr") : b.date.localeCompare(a.date));
-      documentGrid.innerHTML = docs.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document publié</h3><p>Cette catégorie sera complétée lorsque des fichiers auront été explicitement ajoutés au dépôt public.</p></div>';
-      count.textContent = `${docs.length} document${docs.length > 1 ? "s" : ""}`;
-    };
-    const refreshCategoryButtons = () => {
-      categoryButtons.forEach(button => {
-        const active = button.dataset.documentCategory === activeCategory;
-        button.classList.toggle("is-active", active);
-        button.setAttribute("aria-pressed", String(active));
-      });
-    };
-    categoryButtons.forEach(button => button.addEventListener("click", () => {
-      activeCategory = button.dataset.documentCategory;
-      refreshCategoryButtons();
-      paint();
-    }));
-    refreshCategoryButtons();
-    [search, domain, type, sort].forEach(control => control.addEventListener(control === search ? "input" : "change", paint));
-    document.querySelector("[data-reset-filters]")?.addEventListener("click", () => { activeCategory = ""; search.value = ""; domain.value = ""; type.value = ""; sort.value = "date"; refreshCategoryButtons(); paint(); });
+    documentGrid.innerHTML = data.documents.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document</h3><p>Le dépôt sera complété prochainement.</p></div>';
+    if (count) count.textContent = `${data.documents.length} document${data.documents.length > 1 ? "s" : ""}`;
     documentGrid.addEventListener("click", event => {
       const trigger = event.target.closest("[data-preview]");
       if (trigger) openPdf(trigger.dataset.preview);
     });
-    paint();
   }
 
   const modal = document.querySelector("[data-pdf-modal]");

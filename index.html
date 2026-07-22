@@ -1,60 +1,58 @@
-<!doctype html>
+ <!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stéphane Tholon — Mathématiques</title>
-  <meta name="description" content="Site académique de Stéphane Tholon, étudiant en mathématiques à Sorbonne Université : parcours, recherche et enseignement.">
+  <title>Stéphane Tholon — Travaux en mathématiques</title>
+  <meta name="description" content="CV et travaux en mathématiques de Stéphane Tholon, étudiant à Sorbonne Université.">
   <meta name="theme-color" content="#f7f5f0">
-  <meta property="og:title" content="Stéphane Tholon — Mathématiques">
-  <meta property="og:description" content="Analyse fonctionnelle, théorie des distributions, EDP et théorie spectrale.">
+  <meta property="og:title" content="Stéphane Tholon — Travaux en mathématiques">
+  <meta property="og:description" content="CV, rapports et notes de mathématiques.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/img/og-card.svg">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/public-documents.js"></script>
   <script defer src="assets/js/data.js"></script>
   <script defer src="assets/js/main.js"></script>
 </head>
 <body data-page="accueil">
   <header class="site-header" data-site-header></header>
   <main id="contenu">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="hero-kicker">Mathématiques · Paris</div>
-          <h1>Stéphane<br>Tholon</h1>
-          <p class="hero-role">Étudiant en mathématiques — Sorbonne Université</p>
-          <p class="hero-intro">Mon parcours m’a conduit à explorer différents domaines des mathématiques, notamment à travers des stages en probabilités puis en théorie du contrôle. Mes intérêts se concentrent aujourd’hui sur l’analyse fonctionnelle, la théorie des distributions, les équations aux dérivées partielles et la théorie spectrale.</p>
-          <div class="hero-actions">
-            <a class="button button-outline" href="recherche.html">Mes travaux <span aria-hidden="true">→</span></a>
-            <a class="button button-outline" href="contact.html">Me contacter</a>
-          </div>
+    <section class="repository-hero">
+      <div class="container repository-hero-inner">
+        <p class="eyebrow">Étudiant en mathématiques · Sorbonne Université</p>
+        <h1>Stéphane Tholon</h1>
+        <p class="repository-intro">Ce site rassemble mon curriculum vitæ et une sélection de travaux en mathématiques. Il est destiné à donner un accès direct aux documents utiles à l’étude de mes candidatures. Les travaux sont proposés au format PDF et seront progressivement accompagnés d’un résumé.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="documents.html">Consulter les travaux</a>
+          <a class="button button-outline" href="#cv">Voir le CV</a>
         </div>
       </div>
-      <span class="scroll-note" aria-hidden="true">Découvrir</span>
     </section>
 
-    <section class="statement" aria-label="Démarche académique">
-      <div class="statement-inner">
-        <p>Comprendre les structures, relier les outils et approfondir les méthodes de l’analyse.</p>
+    <section class="section cv-section" id="cv" aria-labelledby="cv-title">
+      <div class="container cv-panel">
+        <div>
+          <p class="eyebrow">Candidature</p>
+          <h2 id="cv-title">Curriculum vitæ</h2>
+          <p>Parcours universitaire, expériences de recherche et activités d’enseignement.</p>
+        </div>
+        <div class="cv-actions">
+          <a class="button button-primary" href="assets/documents/cv-stephane-tholon.pdf" target="_blank" rel="noopener">Consulter le CV</a>
+          <a class="button button-outline" href="assets/documents/cv-stephane-tholon.pdf" download>Télécharger le PDF</a>
+        </div>
       </div>
     </section>
 
-    <div class="equation-strip" aria-label="Problème spectral pour le laplacien">
-      <span>−Δu = λu</span>
-    </div>
-
-    <section class="section" aria-labelledby="actualites-title">
-      <div class="container">
-        <div class="section-heading compact"><div><p class="eyebrow">En ce moment</p><h2 id="actualites-title">Actualités académiques</h2></div></div>
-        <article class="news-strip reveal">
-          <time datetime="2026-07">Été 2026</time>
-          <div><h3>Stage en théorie du contrôle</h3><p>Travail encadré par Kévin Le Balc’h autour de la contrôlabilité et de l’observabilité des systèmes linéaires au sein de l’équipe CAGE.</p></div>
-        </article>
-        <article class="news-strip reveal">
-          <time datetime="2026">Orientation actuelle</time>
-          <div><h3>Analyse fonctionnelle, distributions, EDP et théorie spectrale</h3><p>Ce sont les domaines que je souhaite désormais approfondir, après un parcours volontairement ouvert à plusieurs champs des mathématiques.</p></div>
-        </article>
+    <section class="section" aria-labelledby="works-title">
+      <div class="container home-works">
+        <div>
+          <p class="eyebrow">Dépôt</p>
+          <h2 id="works-title">Travaux</h2>
+        </div>
+        <p>Rapports de mes différents stages de recherche, notes de cours et ressources pédagogiques pour les mathématiques.</p>
+        <a class="section-link" href="documents.html">Voir tous les travaux <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
