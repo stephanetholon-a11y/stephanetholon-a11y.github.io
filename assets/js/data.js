@@ -5,9 +5,7 @@ window.siteData = {
 
   profile: {
     name: "Stéphane Tholon",
-    role: "Étudiant en mathématiques — Sorbonne Université",
-    email: "stephane.tholon@icloud.com",
-    situation: "Étudiant à Sorbonne Université"
+    email: "stephane.tholon@icloud.com"
   },
 
   timeline: [
@@ -20,7 +18,7 @@ window.siteData = {
     },
     {
       period: "2025 — 2028",
-      place: "Sorbonne Université",
+      place: "",
       title: "Master Mathématiques et Applications",
       text: "Formation approfondie en analyse fonctionnelle, théorie des distributions, calcul des variations et analyse convexe."
     },
@@ -32,7 +30,7 @@ window.siteData = {
     },
     {
       period: "2024 — 2025",
-      place: "Sorbonne Université",
+      place: "",
       title: "Licence 3 de mathématiques",
       text: "Formation généraliste en analyse, algèbre, topologie et probabilités. Mention bien."
     },
@@ -40,7 +38,7 @@ window.siteData = {
       period: "2023 — 2024",
       place: "Mines Saint-Étienne",
       title: "Cycle ingénieur civil des mines",
-      text: "Première année du cycle ingénieur, suivie d’une réorientation volontaire vers les mathématiques fondamentales."
+      text: "Première année du cycle ingénieur avant une réorientation vers les mathématiques fondamentales."
     },
     {
       period: "2022 — 2023",

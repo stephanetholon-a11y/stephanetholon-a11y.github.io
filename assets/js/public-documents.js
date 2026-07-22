@@ -5,7 +5,7 @@
  * après `abstract:`. Exemple :
  * abstract: "Ce travail présente…",
  *
- * Si le champ reste vide (`abstract: ""`), le site affiche « Résumé à venir ».
+ * Si le champ reste vide (`abstract: ""`), aucun résumé n’est affiché.
  */
 
 window.siteCv = {
