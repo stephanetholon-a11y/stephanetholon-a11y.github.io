@@ -23,4 +23,4 @@ Pour ajouter un résumé, il suffit de remplacer `abstract: ""` par le texte vou
 
 ## Documents publiés
 
-Les PDF présents dans `assets/documents` ont été relus et autorisés pour intégration au site le 22 juillet 2026. Tout nouveau document devra être ajouté explicitement au catalogue avant publication.
+Les PDF présents dans `assets/documents` ont été relus et autorisés individuellement pour leur intégration au site. Tout nouveau document devra être ajouté explicitement au catalogue avant publication.
