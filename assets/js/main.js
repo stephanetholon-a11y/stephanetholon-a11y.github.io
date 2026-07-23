@@ -40,7 +40,6 @@
           ${navItems.map(([id, label, href, newTab]) => `<a href="${href}"${newTab ? ' target="_blank" rel="noopener"' : ""}${id === page ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
         </nav>
         <div class="nav-actions">
-          <button class="language" type="button" aria-label="Langue française. Version anglaise à venir"><strong>FR</strong><span>/ EN</span></button>
           <button class="theme-toggle" type="button" aria-label="Activer le mode sombre">${icon("moon", 17)}</button>
         </div>
       </div>`;
@@ -81,13 +80,6 @@
     menuToggle.setAttribute("aria-label", open ? "Ouvrir le menu" : "Fermer le menu");
     mainNav?.classList.toggle("is-open", !open);
     document.body.classList.toggle("menu-open", !open);
-  });
-
-  document.querySelector(".language")?.addEventListener("click", (event) => {
-    const button = event.currentTarget;
-    button.classList.add("notice");
-    button.setAttribute("aria-label", "La version anglaise sera ajoutée prochainement");
-    window.setTimeout(() => button.classList.remove("notice"), 1200);
   });
 
   const renderTimeline = () => {
@@ -180,6 +172,7 @@
       <div class="work-content">
         <p class="work-meta"><span>${doc.kind}</span><span>${doc.context}</span></p>
         <h4>${doc.title}</h4>
+        ${doc.pages && doc.version ? `<p class="work-details">${doc.pages} page${doc.pages > 1 ? "s" : ""} · ${doc.version}</p>` : ""}
         ${abstract ? `<div class="work-abstract">
           <span>Résumé</span>
           <p>${abstract}</p>
@@ -194,7 +187,7 @@
     const count = document.querySelector("[data-result-count]");
     const groups = [
       ["enseignement", "Ressources pédagogiques"],
-      ["recherche", "Articles de recherche"]
+      ["recherche", "Travaux de recherche"]
     ];
     let documentIndex = 0;
     documentGrid.innerHTML = groups.map(([section, title]) => {
