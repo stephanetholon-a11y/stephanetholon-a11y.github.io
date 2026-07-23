@@ -170,28 +170,50 @@
 
   function documentCard(doc, index) {
     const abstract = doc.abstract?.trim();
-    return `<article class="work-entry reveal" data-doc-id="${doc.id}">
+    const actions = [
+      doc.status ? `<p class="work-status">${doc.status}</p>` : "",
+      doc.file ? `<a class="button button-primary" href="${doc.file}" target="_blank" rel="noopener">Consulter ${icon("external", 15)}</a>
+        <a class="button button-outline" href="${doc.file}" download>Télécharger</a>` : ""
+    ].join("");
+    return `<article class="work-entry reveal${doc.file ? "" : " work-entry-pending"}" data-doc-id="${doc.id}">
       <div class="work-index">${String(index + 1).padStart(2, "0")}</div>
       <div class="work-content">
         <p class="work-meta"><span>${doc.kind}</span><span>${doc.context}</span></p>
-        <h3>${doc.title}</h3>
+        <h4>${doc.title}</h4>
         ${abstract ? `<div class="work-abstract">
           <span>Résumé</span>
           <p>${abstract}</p>
         </div>` : ""}
       </div>
-      <div class="work-actions">
-        <a class="button button-primary" href="${doc.file}" target="_blank" rel="noopener">Consulter ${icon("external", 15)}</a>
-        <a class="button button-outline" href="${doc.file}" download>Télécharger</a>
-      </div>
+      <div class="work-actions">${actions}</div>
     </article>`;
   }
 
   const documentGrid = document.querySelector("[data-document-grid]");
   if (documentGrid) {
     const count = document.querySelector("[data-result-count]");
-    documentGrid.innerHTML = data.documents.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document</h3></div>';
-    if (count) count.textContent = `${data.documents.length} document${data.documents.length > 1 ? "s" : ""}`;
+    const groups = [
+      ["enseignement", "Ressources pédagogiques"],
+      ["recherche", "Articles de recherche"]
+    ];
+    let documentIndex = 0;
+    documentGrid.innerHTML = groups.map(([section, title]) => {
+      const documents = data.documents.filter(doc => doc.section === section);
+      if (!documents.length) return "";
+      const cards = documents.map(doc => documentCard(doc, documentIndex++)).join("");
+      return `<section class="work-group" aria-labelledby="work-group-${section}">
+        <div class="work-group-heading">
+          <h3 id="work-group-${section}">${title}</h3>
+          <span>${documents.length} entrée${documents.length > 1 ? "s" : ""}</span>
+        </div>
+        <div class="work-list">${cards}</div>
+      </section>`;
+    }).join("") || '<div class="empty-state"><h3>Aucun document</h3></div>';
+    if (count) {
+      const available = data.documents.filter(doc => doc.file).length;
+      const upcoming = data.documents.length - available;
+      count.textContent = `${available} documents disponibles · ${upcoming} à venir`;
+    }
   }
 
   const form = document.querySelector("#contact-form");

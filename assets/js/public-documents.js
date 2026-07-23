@@ -13,18 +13,10 @@ window.siteCv = {
 };
 
 window.siteDocuments = [
-  // Travaux de recherche : du plus récent au plus ancien.
-  {
-    id: "probabilites-analyse-fonctionnelle",
-    title: "Autour de quelques résultats de probabilités et d’analyse fonctionnelle",
-    kind: "Rapport",
-    context: "Stage de recherche · 2025",
-    abstract: "Issu d’un stage au Laboratoire de Probabilités, Statistique et Modélisation, ce rapport part de l’intégrale de Riemann–Stieltjes et du théorème de Radon–Nikodym pour aborder l’espérance conditionnelle, les espaces polonais, la convergence faible et le théorème de Donsker.",
-    file: "assets/documents/probabilites-analyse-fonctionnelle.pdf"
-  },
-  // Ressources d’enseignement : du niveau le plus bas au plus haut.
+  // Ressources pédagogiques : du niveau le plus bas au plus haut.
   {
     id: "cahier-calcul-mental-litteral",
+    section: "enseignement",
     title: "Cahier de calcul mental et de calcul littéral",
     kind: "Ressource pédagogique",
     context: "Automatismes du collège · Édition 2026",
@@ -33,6 +25,7 @@ window.siteDocuments = [
   },
   {
     id: "cours-mathematiques-seconde",
+    section: "enseignement",
     title: "Cours de mathématiques — Seconde générale",
     kind: "Notes de cours",
     context: "De la Troisième vers la Première · Programme 2026–2027",
@@ -40,15 +33,28 @@ window.siteDocuments = [
     file: "assets/documents/Cours_de_mathematiques_Seconde.pdf"
   },
   {
-    id: "cours-mathematiques-premiere-terminale",
-    title: "Cours de mathématiques — De la Première vers la Terminale",
+    id: "cours-mathematiques-premiere",
+    section: "enseignement",
+    title: "Cours de mathématiques — Première",
     kind: "Notes de cours",
-    context: "Trinômes, suites et dérivation · 2026",
-    abstract: "Ces notes accompagnent la transition de la Première vers la Terminale autour de trois thèmes : les trinômes du second degré, les suites numériques et la dérivation. Le cours associe définitions, démonstrations, méthodes, exercices et prolongements vers l’enseignement supérieur.",
-    file: "assets/documents/Cours_de_mathematiques_Premiere_Terminale.pdf"
+    context: "Version incomplète · 2026",
+    abstract: "Ce cours de Première est en cours de rédaction et reste incomplet. La version actuellement disponible traite les trinômes du second degré, les suites numériques et la dérivation ; d’autres chapitres seront ajoutés progressivement.",
+    file: "assets/documents/Cours_de_mathematiques_Premiere_Terminale.pdf",
+    status: "En cours de rédaction"
+  },
+  {
+    id: "cours-mathematiques-terminale",
+    section: "enseignement",
+    title: "Cours de mathématiques — Terminale",
+    kind: "Notes de cours",
+    context: "Rubrique prévue",
+    abstract: "Le cours de Terminale n’est pas encore disponible. Cette rubrique sera complétée lors de sa publication.",
+    file: null,
+    status: "À venir"
   },
   {
     id: "lecon-hyperplans",
+    section: "enseignement",
     title: "Leçon sur les hyperplans",
     kind: "Leçon",
     context: "PCSI · Algèbre linéaire",
@@ -57,6 +63,7 @@ window.siteDocuments = [
   },
   {
     id: "banque-exercices-sans-corrections",
+    section: "enseignement",
     title: "Questions de cours et exercices pour les classes préparatoires",
     kind: "Ressource pédagogique",
     context: "Classes préparatoires · Sans corrections",
@@ -65,10 +72,31 @@ window.siteDocuments = [
   },
   {
     id: "cours-mathematiques-pcx",
+    section: "enseignement",
     title: "Cours de mathématiques — PCX",
     kind: "Notes de cours",
     context: "Analyse, algèbre et probabilités",
     abstract: "Ces notes couvrent le programme de mathématiques de la classe de PC*, de l’algèbre linéaire et de la réduction aux séries de fonctions, aux probabilités, aux intégrales à paramètre, aux équations différentielles et au calcul différentiel.",
     file: "assets/documents/cours-mathematiques-pcx.pdf"
+  },
+  // Articles de recherche : après les ressources pédagogiques.
+  {
+    id: "probabilites-analyse-fonctionnelle",
+    section: "recherche",
+    title: "Autour de quelques résultats de probabilités et d’analyse fonctionnelle",
+    kind: "Article de recherche",
+    context: "Stage de recherche · 2025",
+    abstract: "Issu d’un stage au Laboratoire de Probabilités, Statistique et Modélisation, ce travail part de l’intégrale de Riemann–Stieltjes et du théorème de Radon–Nikodym pour aborder l’espérance conditionnelle, les espaces polonais, la convergence faible et le théorème de Donsker.",
+    file: "assets/documents/probabilites-analyse-fonctionnelle.pdf"
+  },
+  {
+    id: "controle-lineaire-dimension-finie",
+    section: "recherche",
+    title: "Éléments de théorie du contrôle linéaire en dimension finie",
+    kind: "Article de recherche",
+    context: "Stage de recherche · 2026",
+    abstract: "Ce travail porte sur les systèmes linéaires en dimension finie, la contrôlabilité, l’observabilité et les critères de Kalman et de Hautus. Le document sera ajouté à cette rubrique lorsqu’il sera prêt à être publié.",
+    file: null,
+    status: "À venir"
   }
 ];
