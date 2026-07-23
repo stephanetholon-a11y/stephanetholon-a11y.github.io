@@ -1,12 +1,16 @@
 .DS_Store
 .vscode/
 
-# Seuls les quatre PDF ci-dessous ont été autorisés pour publication.
+# Seuls les PDF ci-dessous ont été autorisés pour publication.
 *.pdf
 !assets/documents/cv-stephane-tholon.pdf
 !assets/documents/probabilites-analyse-fonctionnelle.pdf
 !assets/documents/cours-mathematiques-pcx.pdf
 !assets/documents/lecon-hyperplans.pdf
+!assets/documents/Banque_exercices_sans_corrections.pdf
+!assets/documents/Cours_de_mathematiques_Seconde.pdf
+!assets/documents/Cours_de_mathematiques_Premiere_Terminale.pdf
+!assets/documents/Cahier de calcul mental.pdf
 assets/img/thumbnails/
 assets/js/documents-data.js
 *.doc
