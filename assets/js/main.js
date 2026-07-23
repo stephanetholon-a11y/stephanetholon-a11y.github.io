@@ -20,10 +20,10 @@
   };
 
   const navItems = [
-    ["accueil", "Accueil", "index.html"],
-    ["documents", "Travaux", "documents.html"],
-    ["cv", "CV", "assets/documents/cv-stephane-tholon.pdf"],
-    ["contact", "Contact", "contact.html"]
+    ["accueil", "Accueil", "index.html", false],
+    ["documents", "Travaux", "documents.html", false],
+    ["cv", "CV", "assets/documents/cv-stephane-tholon.pdf", true],
+    ["contact", "Contact", "contact.html", false]
   ];
 
   const header = document.querySelector("[data-site-header]");
@@ -37,7 +37,7 @@
         </a>
         <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
         <nav class="main-nav" aria-label="Navigation principale">
-          ${navItems.map(([id, label, href]) => `<a href="${href}"${id === page ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+          ${navItems.map(([id, label, href, newTab]) => `<a href="${href}"${newTab ? ' target="_blank" rel="noopener"' : ""}${id === page ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
         </nav>
         <div class="nav-actions">
           <button class="language" type="button" aria-label="Langue française. Version anglaise à venir"><strong>FR</strong><span>/ EN</span></button>
@@ -51,7 +51,7 @@
     footer.innerHTML = `
       <div class="footer-grid">
         <div><a class="footer-name" href="index.html">Stéphane Tholon</a><p>Mathématiques</p></div>
-        <div class="footer-links"><a href="documents.html">Travaux</a><a href="assets/documents/cv-stephane-tholon.pdf">Curriculum vitæ</a></div>
+        <div class="footer-links"><a href="documents.html">Travaux</a><a href="assets/documents/cv-stephane-tholon.pdf" target="_blank" rel="noopener">Curriculum vitæ</a></div>
         <div class="footer-contact"><a href="mailto:${data.profile.email}">${data.profile.email}</a></div>
       </div>`;
   }
@@ -181,7 +181,7 @@
         </div>` : ""}
       </div>
       <div class="work-actions">
-        <button class="button button-primary" type="button" data-preview="${doc.id}">Consulter</button>
+        <a class="button button-primary" href="${doc.file}" target="_blank" rel="noopener">Consulter ${icon("external", 15)}</a>
         <a class="button button-outline" href="${doc.file}" download>Télécharger</a>
       </div>
     </article>`;
@@ -192,25 +192,6 @@
     const count = document.querySelector("[data-result-count]");
     documentGrid.innerHTML = data.documents.map(documentCard).join("") || '<div class="empty-state"><h3>Aucun document</h3></div>';
     if (count) count.textContent = `${data.documents.length} document${data.documents.length > 1 ? "s" : ""}`;
-    documentGrid.addEventListener("click", event => {
-      const trigger = event.target.closest("[data-preview]");
-      if (trigger) openPdf(trigger.dataset.preview);
-    });
-  }
-
-  const modal = document.querySelector("[data-pdf-modal]");
-  function openPdf(id) {
-    const doc = data.documents.find(item => item.id === id);
-    if (!modal || !doc) return;
-    modal.querySelector("[data-modal-title]").textContent = doc.title;
-    modal.querySelector("iframe").src = `${doc.file}#view=FitH`;
-    modal.querySelector("[data-modal-download]").href = doc.file;
-    modal.showModal();
-  }
-  if (modal) {
-    modal.querySelector("[data-close-modal]")?.addEventListener("click", () => modal.close());
-    modal.addEventListener("click", event => { if (event.target === modal) modal.close(); });
-    modal.addEventListener("close", () => { modal.querySelector("iframe").src = "about:blank"; });
   }
 
   const form = document.querySelector("#contact-form");

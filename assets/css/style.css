@@ -301,14 +301,6 @@ main { min-height: calc(100vh - var(--nav-height)); }
 .document-body h3 { margin-top: 28px; }
 .document-details { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line); }
 .empty-state { grid-column: 1 / -1; padding: 70px 25px; border: 1px dashed var(--line-strong); text-align: center; color: var(--muted); }
-.pdf-modal { width: min(1100px, calc(100vw - 32px)); height: min(850px, calc(100vh - 32px)); padding: 0; border: 0; color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
-.pdf-modal::backdrop { background: rgba(7, 15, 27, .76); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
-.modal-header { height: 64px; padding: 0 16px 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); }
-.modal-header strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--serif); font-size: 1.05rem; }
-.modal-actions { display: flex; align-items: center; gap: 8px; }
-.modal-actions a, .modal-actions button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--line); background: transparent; }
-.pdf-modal iframe { width: 100%; height: calc(100% - 64px); border: 0; background: #e7e8ea; }
-
 .contact-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 8vw; }
 .contact-details h2 { margin: 0 0 23px; color: var(--navy); font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 500; line-height: 1.05; }
 .contact-details > p { color: var(--muted); }
@@ -369,8 +361,6 @@ main { min-height: calc(100vh - var(--nav-height)); }
 .work-abstract p { margin: 0; color: var(--ink); line-height: 1.65; }
 .work-actions { display: flex; flex-direction: column; gap: 9px; min-width: 142px; padding-top: 24px; }
 .work-actions .button { width: 100%; }
-.modal-actions a, .modal-actions button { width: auto; min-width: 48px; padding: 0 11px; color: var(--ink); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
-
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
